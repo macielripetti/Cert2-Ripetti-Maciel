@@ -10,9 +10,7 @@ urlpatterns = [
     path('editar/<str:nombrep>/', views.editar, name='editar_proyecto'),
     path('asignado/', views.mostrar_proyectos, name="asignado"),
     path('asignar_profesor/<str:nombrep>/', views.asignar_profesor, name='asignar_profesor'),
-   
-    path('login/', views.login_view, name='login'),
-    path('logout/', views.logout_view, name='logout'),
+
 
 ]
 

@@ -19,10 +19,7 @@ def login_view(request):
             return render(request, 'login.html', {'error': 'Usuario o contraseña incorrectos'})
     return render(request, 'login.html')
 
-@login_required
-def logout_view(request):
-    logout(request)
-    return redirect('login')
+
 
 def index(request):
     return redirect(proyecto)
@@ -42,7 +39,6 @@ def proyecto(request: HttpRequest):
             'id_tema_actual': tema_id
         },)
 
-@login_required
 def crear(request):
     if request.method == 'POST':
         nombrep = request.POST['txtNombre']
@@ -66,7 +62,6 @@ def listar(request):
     proyectos = Proyecto.objects.all()
     return render(request, 'comunicados/editar.html', {'proyectos': proyectos})
 
-@login_required
 def editar(request, nombrep):
     proyecto = get_object_or_404(Proyecto, nombrep=nombrep)
 
@@ -82,7 +77,7 @@ def editar(request, nombrep):
     return render(request, 'comunicados/editarproyecto.html', {'proyecto': proyecto})
 
 
-@login_required
+
 def mostrar_proyectos(request):
     tiene_profesor = request.GET.get('tiene_profesor')
     if tiene_profesor == 'asignado':
@@ -93,7 +88,6 @@ def mostrar_proyectos(request):
         proyectos = Proyecto.objects.all()
     return render(request, 'comunicados/asignado.html', {'proyectos': proyectos, 'tiene_profesor': tiene_profesor})
 
-@login_required
 def asignar_profesor(request, nombrep):
     if request.method == 'POST':
         proyecto = get_object_or_404(Proyecto, nombrep=nombrep)
@@ -103,7 +97,6 @@ def asignar_profesor(request, nombrep):
             return JsonResponse({'success': True, 'profesor': proyecto.profesor})
     return JsonResponse({'success': False})
 
-@login_required
 def proyecto_tiene_profesor(request):
     tema = request.GET.get('tema')
     if tema:
