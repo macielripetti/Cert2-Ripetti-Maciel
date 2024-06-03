@@ -62,7 +62,6 @@ def crear(request):
 
     return render(request, 'comunicados/crear.html')
 
-@login_required
 def listar(request):
     proyectos = Proyecto.objects.all()
     return render(request, 'comunicados/editar.html', {'proyectos': proyectos})
