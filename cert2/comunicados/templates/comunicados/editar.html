@@ -1,0 +1,46 @@
+{% extends "comunicados/base.html" %}
+{% load static %}
+
+{% block header %}
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-lg-3 text-center"> <!--Logo institucional-->
+            <img src="{% static 'images/Logo_UTFSM.png' %}" alt="" class="logos">
+        </div>
+        <div class="col-lg-9 d-flex justify-content-center align-items-center my-auto d-none d-lg-block border-bottom">
+            <h1>Edita un proyecto</h1>
+        </div>
+    </div>
+    <!--
+        Crear Proyectos 
+        
+    -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre Proyecto</th>
+                <th>Estudiante</th>
+                <th>Tema</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proyecto in proyectos %}
+            <tr>
+                <td>{{ proyecto.nombrep }}</td>
+                <td>{{ proyecto.estudiante }}</td>
+                <td>{{ proyecto.tema }}</td>
+                <td>
+                    {% if proyecto.nombrep %}
+                        <a href="{% url 'editar_proyecto' proyecto.nombrep %}">Editar</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

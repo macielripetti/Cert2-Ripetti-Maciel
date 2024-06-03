@@ -1,0 +1,370 @@
+.no-gutters {
+    --bs-gutter-x: 0;
+}
+
+.logos {
+    max-width: 100%;
+    max-height: 128px;
+}
+
+.logo {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+@media (min-width: 992px) {
+    .navbar {
+        padding-left: 20vw;
+        padding-right: 20vw;
+    }
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --padding-container: 100px 0;
+    --color-title: #001A49;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: var(--padding-container);
+}
+
+.hero {
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 800px;
+    position: relative;
+    display: grid;
+    grid-template-rows: 100px 1fr;
+    color: #fff;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:url('../images/sv.jpg');
+    background-size: cover;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%);
+    z-index: -1;
+}
+
+
+/* Nav */
+
+#navbarNav {
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    background-color: #005e90; /* Cambia el color de fondo a azul */
+    display: flex;
+    align-items: center;
+    padding: 0; /* Elimina el padding predeterminado */
+}
+
+
+
+.nav__logo {
+    height: 100%; /* Asegura que el div ocupe todo el alto de la navbar */
+}
+
+.nav__logo img {
+    height: 100%; /* Hace que la imagen ocupe todo el alto del contenedor */
+    width: auto; /* Mantiene la proporción de la imagen */
+    display: block; /* Elimina el espacio en blanco alrededor de la imagen */
+}
+.nav {
+    --padding-container: 0;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    max-width: 100%; /* Asegura que no haya margen */
+}
+
+.nav__title {
+    font-weight: 300;
+}
+
+.nav__link {
+    margin-right: 15px;
+    margin-left: auto;
+    padding: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap: 2em;
+}
+
+.nav__items {
+    list-style: none;
+}
+
+.nav__links {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav__menu {
+    margin-left: auto;
+    cursor: pointer;
+    display: none;
+}
+
+.nav__img {
+    display: block;
+    width: 30px;
+}
+
+
+.nav__close {
+    display: var(--show, none);
+}
+
+
+/* Hero container */
+
+.hero__container {
+    max-width: 800px;
+    --padding-container: 0;
+    display: grid;
+    grid-auto-rows: max-content;
+    align-content: center;
+    gap: 1em;
+    padding-bottom: 100px;
+    text-align: center;
+}
+
+.hero__title {
+    font-size: 3rem;
+}
+
+.hero__paragraph {
+    margin-bottom: 20px;
+}
+
+.cta {
+    display: inline-block;
+    background-color: #2091F9;
+    justify-self: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 13px 30px;
+    border-radius: 32px;
+}
+
+
+/* Footer */
+
+.footer{
+    background-color: #1D293F;
+}
+
+.footer__title{
+    font-weight: 300;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.footer__title, .footer__newsletter{
+    color: #fff;
+}
+
+
+.footer__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 60px;
+}
+
+.nav--footer{
+    padding-bottom: 20px;
+    display: grid;
+    gap: 1em;
+    grid-auto-flow: row;
+    height: 100%;
+}
+
+.nav__link--footer{
+    display: flex;
+    margin: 0;
+    margin-right: 20px;
+    flex-wrap: wrap;
+}
+
+.footer__inputs{
+    margin-top: 10px;
+    display: flex;
+    overflow: hidden;
+}
+
+.footer__input{
+    background-color: #fff;
+    height: 50px;
+    display: block;
+    padding-left: 10px;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    margin-right: 16px;
+}
+
+.footer__submit{
+    margin-left: auto;
+    display: inline-block;
+    height: 50px;
+    padding: 0 20px ;
+    background-color: #2091F9;
+    border: none;
+    font-size: 1rem;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.footer__copy{
+    --padding-container: 30px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.footer__copyright{
+    font-weight: 300;
+}
+
+.footer__icons{
+    margin-bottom: 10px;
+}
+
+.footer__img{
+    width: 30px;
+}
+
+.form-container {
+    background-color: #005e90; 
+    width: 100%;
+    border-radius: 5px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 90vh;
+    display: flex;
+
+  }
+  
+  .login-container {
+    max-width: 500px; /* Ajusta este valor según necesites */
+    margin: 0 auto; /* Centra el login-container horizontalmente */
+    padding: 20px;
+    background-color: #005e90; /* Color de fondo opcional */
+    border-radius: 8px; /* Esquinas redondeadas opcionales */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+  }
+  .form-container .login-container > h2 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 2.5rem;
+  }
+  
+  .form-container .login-container > p,
+  .form-container .login-container span {
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .form-container .login-container label {
+    display: block;
+    font-weight: bold;
+    padding: 5px 0;
+  }
+  
+  .form-container .login-container input.input {
+    display: block;
+    box-sizing: border-box;
+    padding: 10px;
+    border: solid 1px #ffffff;
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .form-container .login-container input.input:focus {
+    outline: solid 1px rgb(0, 153, 255);
+  }
+  .form-container .login-container .providers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .form-container .login-container button.btn,
+  .form-container .login-container input.btn {
+    border: none;
+    padding: 15px 0;
+    width: 100%;
+    font-weight: bolder;
+    display: block;
+    border-radius: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  
+  .form-container .login-container input.btn.btn-login {
+    background-color: black;
+    color: white;
+  }
+
+  
+  .form-container .login-container button.btn.facebook-provider {
+    background-color: rgb(10, 82, 216);
+    color: white;
+    border: 0;
+  }
+
+
+  .form-container .login-container button.btn.twitter-provider:hover {
+    background-color: rgb(7, 133, 172);
+    color: white;
+  }
+  
+  .form-container .login-container .options {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  
+ .input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+ }
+
+ .btn-login {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+ }
+
+ .btn-login:hover {
+    background-color: #0056b3;
+ }
+
+  

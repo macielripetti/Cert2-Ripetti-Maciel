@@ -1,0 +1,49 @@
+{% extends "comunicados/base.html" %}
+{% load static %}
+
+{% block header %}
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-lg-3 text-center"> <!--Logo institucional-->
+            <img src="{% static 'images/Logo_UTFSM.png' %}" alt="" class="logos">
+        </div>
+        <div class="col-lg-9 d-flex justify-content-center align-items-center my-auto d-none d-lg-block border-bottom">
+            <h1>Edita un proyecto</h1>
+        </div>
+    </div>
+    <!--
+        Editar Proyectos 
+        
+    -->
+    <form action="{% url 'editar_proyecto' proyecto.nombrep %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="txtNombre" class="form-label">Nombre Proyecto</label>
+            <input type="text" class="form-control" id="txtNombre" name="txtNombre" value="{{ proyecto.nombrep }}" placeholder="...">
+        </div>
+        <div class="mb-3">
+            <label for="txtEstudiante" class="form-label">Nombre Estudiante</label>
+            <input type="text" class="form-control" id="txtEstudiante" name="txtEstudiante" value="{{ proyecto.estudiante }}" placeholder="...">
+        </div>
+        <div class="mb-3">
+          <label for="txtEmail" class="form-label">Email Estudiante</label>
+          <input type="email" class="form-control" id="txtEmail" name="txtEmail" value="{{ proyecto.email }}" placeholder="...">
+        </div>
+        <div class="mb-3">
+          <label for="cboTema" class="form-label">Tema</label>
+          <select class="form-select" aria-label="Default select example" id="cboTema" name="cboTema">
+              <option value="WEB" {% if proyecto.tema == "WEB" %}selected{% endif %}>WEB</option>
+              <option value="APP" {% if proyecto.tema == "APP" %}selected{% endif %}>APP</option>
+              <option value="IA" {% if proyecto.tema == "IA" %}selected{% endif %}>IA</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="txtDescripcion" class="form-label">Descripcion</label>
+          <textarea class="form-control" id="txtDescripcion" name="txtDescripcion" rows="3">{{ proyecto.descripcion }}</textarea>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Actualizar">
+      </form>
+
+</div>
+{% endblock %}

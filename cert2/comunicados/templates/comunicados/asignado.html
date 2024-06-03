@@ -1,0 +1,94 @@
+{% extends "comunicados/base.html" %}
+{% load static %}
+{% csrf_token %}
+{% block header %}
+</header>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-lg-3 text-center"> <!--Logo institucional-->
+            <img src="{% static 'images/Logo_UTFSM.png' %}" alt="" class="logos">
+        </div>
+        <div class="col-lg-9 d-flex justify-content-center align-items-center my-auto d-none d-lg-block border-bottom">
+            <h1>Proyectos Presentados</h1>
+        </div>
+    </div>
+    <!--
+        Filtrado por tema
+        TODO: Realizar filtrado por tema
+        
+    -->
+    <form method="GET" action="{% url 'asignado' %}">
+      <label for="tiene_profesor">Filtrar por asignación:</label>
+      <select name="tiene_profesor" id="tiene_profesor">
+          <option value="">Todos</option>
+          <option value="asignado" {% if tiene_profesor == 'asignado' %}selected{% endif %}>Asignado</option>
+          <option value="no_asignado" {% if tiene_profesor == 'no_asignado' %}selected{% endif %}>No asignado</option>
+      </select>
+      <button type="submit">Filtrar</button>
+    </form>
+    
+    
+    
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nombre Proyecto</th>
+            <th scope="col">Estudiante</th>
+            <th scope="col">Email</th>
+            <th scope="col">Tema</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Profesor</th>
+    
+          </tr>
+        </thead>
+    
+        <tbody>
+            {% for proyecto in proyectos %}
+            <tr>
+                <td>{{ proyecto.nombrep }}</td>
+                <td>{{ proyecto.estudiante }}</td>
+                <td>{{ proyecto.email }}</td>
+                <td>{{ proyecto.tema }}</td>
+                <td>{{ proyecto.descripcion }}</td>
+                <td>
+                    {% if proyecto.profesor %}
+                        {{ proyecto.profesor }}
+                    {% else %}
+                    <button onclick="asignarProfesor('{{ proyecto.nombrep }}', this)">Patrocinar</button>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Incluir la función JavaScript -->
+    <script>
+        function asignarProfesor(nombrep, button) {
+            fetch(`/asignar_profesor/${nombrep}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' // Asegúrate de incluir el token CSRF
+                },
+                credentials: 'same-origin'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    button.textContent = 'Asignado a ' + data.profesor;
+                    button.disabled = true;
+                } else {
+                    alert('Error al asignar el profesor.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+
+</div>
+{% endblock %}
